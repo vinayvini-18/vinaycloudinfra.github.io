@@ -9,321 +9,498 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        .gradient-bg {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+        body {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+        }
+        .section-bg {
+            background: linear-gradient(to right, rgba(219, 234, 254, 0.9), rgba(191, 219, 254, 0.9));
+            backdrop-filter: blur(5px);
+        }
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.7), transparent);
+            margin: 3rem 0;
         }
         .skill-pill {
             transition: all 0.3s ease;
         }
         .skill-pill:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .section-divider {
-            background: linear-gradient(90deg, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.1) 50%, rgba(217,70,239,0.1) 100%);
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <header class="gradient-bg text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold tracking-tight">V I N A Y S</div>
-                <nav class="hidden md:block">
-                    <ul class="flex space-x-8">
-                        <li><a href="#about" class="hover:text-indigo-200 transition">About</a></li>
-                        <li><a href="#experience" class="hover:text-indigo-200 transition">Experience</a></li>
-                        <li><a href="#projects" class="hover:text-indigo-200 transition">Projects</a></li>
-                        <li><a href="#contact" class="hover:text-indigo-200 transition">Contact</a></li>
-                    </ul>
-                </nav>
-                <button class="md:hidden focus:outline-none">
-                    <i data-feather="menu"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <section class="gradient-bg text-white py-20">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hii, I'm Vinay S</h1>
-                <p class="text-xl mb-8">Cloud Infra Engineer</p>
-                <div class="flex space-x-4">
-                    <a href="#contact" class="bg-white text-indigo-600 px-6 py-2 rounded-full font-medium hover:bg-indigo-100 transition">Get In Touch</a>
-                    <a href="#projects" class="border-2 border-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-indigo-600 transition">View Projects</a>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <div id="vanta-bg"></div>
+    
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold gradient-text">VINAY S</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="#experience" class="text-gray-700 hover:text-blue-600 transition">Experience</a>
+                    <a href="#skills" class="text-gray-700 hover:text-blue-600 transition">Skills</a>
+                    <a href="#projects" class="text-gray-700 hover:text-blue-600 transition">Projects</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
                 </div>
             </div>
-            <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
-                <div class="bg-white rounded-full p-2 shadow-2xl">
-                    <img src="Off DP 2.jpg" alt="Profile" class="rounded-full w-64 h-64 object-cover">
+        </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white/95 backdrop-blur-lg z-40 pt-20 px-4">
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#about" class="text-xl text-gray-700 hover:text-blue-600 transition py-2">About</a>
+            <a href="#experience" class="text-xl text-gray-700 hover:text-blue-600 transition py-2">Experience</a>
+            <a href="#skills" class="text-xl text-gray-700 hover:text-blue-600 transition py-2">Skills</a>
+            <a href="#projects" class="text-xl text-gray-700 hover:text-blue-600 transition py-2">Projects</a>
+            <a href="#contact" class="text-xl text-gray-700 hover:text-blue-600 transition py-2">Contact</a>
+            <button id="close-menu" class="absolute top-4 right-4 p-2">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <section class="min-h-screen flex items-center pt-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center md:text-left">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4" data-aos="fade-up">
+                    Hi, I'm <span class="gradient-text">Vinay S</span>
+                </h1>
+                <h2 class="text-2xl md:text-4xl font-semibold text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
+                    Cloud Infrastructure Engineer
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto md:mx-0 mb-8" data-aos="fade-up" data-aos-delay="200">
+                    Specializing in AWS, multi-cloud environments, and server management with a passion for building secure, scalable infrastructure solutions.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start" data-aos="fade-up" data-aos-delay="300">
+                    <a href="#contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow hover:shadow-lg transition">
+                        Contact Me
+                    </a>
+                    <a href="#projects" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-100 transition">
+                        View Projects
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Profile Summary</h2>
-            <div class="max-w-4xl mx-auto bg-gray-50 rounded-xl p-8 shadow-lg mb-20" data-aos="fade-up">
-                <p class="text-lg leading-relaxed">
-                    Cloud Infrastructure Engineer with experience in AWS and multi-cloud environments. Skilled in Ubuntu server management, VPN configuration, firewall rules, and troubleshooting server and infrastructure issues. B.Tech in CSE (AIML) from Reva University (2025).
+    <section id="about" class="py-20 section-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+                <span class="gradient-text">Profile Summary</span>
+            </h2>
+            <div class="bg-gray-50 rounded-xl p-8 shadow-sm" data-aos="fade-up">
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Cloud Infrastructure Engineer with hands-on experience in AWS and multi-cloud environments. Skilled in Ubuntu server management, VPN configuration, firewall rules, and troubleshooting server & network issues. Currently managing cloud projects for Rajasthan and Tripura State Electricity Board websites. Completed B-Tech in CSE (AIML) from Reva University (2025).
                 </p>
             </div>
-
-            <div id="experience" class="mb-20">
-                <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Professional Experience</h2>
-                <div class="max-w-4xl mx-auto" data-aos="fade-up">
-                    <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100">
-                        <div class="flex items-start mb-6">
-                            <div class="bg-indigo-100 p-3 rounded-full mr-4">
-                                <i data-feather="briefcase" class="text-indigo-600"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold">Cloud Infrastructure Engineer</h3>
-                                <p class="text-gray-600">BCITS Pvt Limited | Aug 2025 – Present</p>
-                            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-blue-100 rounded-full mr-4">
+                            <i data-feather="award" class="text-blue-600"></i>
                         </div>
-                        <ul class="space-y-3 pl-4">
-                            <li class="flex items-start">
-                                <i data-feather="chevron-right" class="text-indigo-500 mr-2 mt-1"></i>
-                                <span>Manage and optimize cloud infrastructure on AWS and other providers</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="chevron-right" class="text-indigo-500 mr-2 mt-1"></i>
-                                <span>Configure and troubleshoot Ubuntu servers, VPNs, and firewall rules</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="chevron-right" class="text-indigo-500 mr-2 mt-1"></i>
-                                <span>Resolve server, network, and cloud resource issues to ensure high availability</span>
-                            </li>
-                        </ul>
+                        <h3 class="text-xl font-semibold">Education</h3>
                     </div>
+                    <ul class="space-y-4">
+                        <li>
+                            <h4 class="font-medium">B-Tech in CSE(AIML)</h4>
+                            <p class="text-gray-600">REVA University (2025)</p>
+                            <p class="text-gray-600">8.48 CGPA</p>
+                        </li>
+                        <li>
+                            <h4 class="font-medium">12th (State)</h4>
+                            <p class="text-gray-600">Narayana PU College (2021)</p>
+                            <p class="text-gray-600">89%</p>
+                        </li>
+                        <li>
+                            <h4 class="font-medium">10th (CBSE)</h4>
+                            <p class="text-gray-600">Narayana E-Techno School (2019)</p>
+                            <p class="text-gray-600">90.6%</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-purple-100 rounded-full mr-4">
+                            <i data-feather="globe" class="text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Languages</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-green-500 mr-2"></i>
+                            <span>English</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-green-500 mr-2"></i>
+                            <span>Kannada</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check" class="text-green-500 mr-2"></i>
+                            <span>Hindi</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="p-3 bg-green-100 rounded-full mr-4">
+                            <i data-feather="file-text" class="text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Certifications</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-blue-500 mr-2"></i>
+                            <span>AWS Cloud Practitioner Essentials</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-blue-500 mr-2"></i>
+                            <span>Microsoft Azure AI Fundamentals</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-blue-500 mr-2"></i>
+                            <span>Linux for DevOps Basics</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-blue-500 mr-2"></i>
+                            <span>Data Structures and Algorithms (DSA)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="check-circle" class="text-blue-500 mr-2"></i>
+                            <span>Introduction to Cybersecurity by CISCO</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div id="projects">
-                 <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Projects</h2>
-                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                     <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up">
-                         <div class="bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                             <i data-feather="cloud" class="text-indigo-600"></i>
-                         </div>
-                         <h3 class="text-xl font-bold mb-2">Portfolio Website with CI/CD</h3>
-                         <p class="text-gray-600 mb-4">Deployed an interactive resume on AWS S3 with automated updates via Code Pipeline.</p>
-                         <div class="flex flex-wrap gap-2">
-                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">AWS</span>
-                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">S3</span>
-                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">CodePipeline</span>
-                             <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">GitHub</span>
-                         </div>
-                     </div>
-
-                     <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                         <div class="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                             <i data-feather="activity" class="text-purple-600"></i>
-                         </div>
-                         <h3 class="text-xl font-bold mb-2">PenumoVit – Pneumonia Detection</h3>
-                         <p class="text-gray-600 mb-4">Vision Transformer (ViT) based system to detect pneumonia from chest X-rays with ~95% accuracy.</p>
-                         <div class="flex flex-wrap gap-2">
-                             <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">AI</span>
-                             <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Vision Transformer</span>
-                             <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Python</span>
-                         </div>
-                     </div>
-
-                     <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                         <div class="bg-blue-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                             <i data-feather="cpu" class="text-blue-600"></i>
-                         </div>
-                         <h3 class="text-xl font-bold mb-2">PowerOf2 Website</h3>
-                         <p class="text-gray-600 mb-4">Static website on AWS Amplify using DynamoDB, Lambda, API Gateway to return power of 2.</p>
-                         <div class="flex flex-wrap gap-2">
-                             <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">AWS Amplify</span>
-                             <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">DynamoDB</span>
-                             <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Lambda</span>
-                         </div>
-                     </div>
-
-                     <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up">
-                         <div class="bg-green-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
-                             <i data-feather="eye" class="text-green-600"></i>
-                         </div>
-                         <h3 class="text-xl font-bold mb-2">Vehicle Number Plate Detection</h3>
-                         <p class="text-gray-600 mb-4">Computer vision system using OpenCV and Easy OCR for real-time vehicle number plate detection.</p>
-                         <div class="flex flex-wrap gap-2">
-                             <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">OpenCV</span>
-                             <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Easy OCR</span>
-                             <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Python</span>
-                         </div>
-                     </div>
-                 </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
-                <div class="space-y-8">
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-right">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i data-feather="mail" class="mr-2"></i> Contact
-                        </h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center"><i data-feather="phone" class="mr-2"></i> +91 9113262219</li>
-                            <li class="flex items-center"><i data-feather="mail" class="mr-2"></i> vinivinay6173@gmail.com</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-right">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i data-feather="book" class="mr-2"></i> Education
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-medium">B-Tech in CSE(AIML)</h4>
-                                <p class="text-sm text-gray-600">REVA University | 8.48 CGPA | 2025</p>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">12th (State Board)</h4>
-                                <p class="text-sm text-gray-600">Narayana PU College | 89% | 2021</p>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">10th (CBSE)</h4>
-                                <p class="text-sm text-gray-600">Narayana E-Techno School | 90.6% | 2019</p>
+    <section id="experience" class="py-20" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+                <span class="gradient-text">Professional Experience</span>
+            </h2>
+            
+            <div class="relative">
+                <div class="hidden md:block absolute left-1/2 h-full w-1 bg-gradient-to-b from-blue-400 to-purple-500 transform -translate-x-1/2"></div>
+                
+                <div class="mb-16" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-1/2 md:pr-12 mb-8 md:mb-0 md:text-right">
+                            <h3 class="text-xl font-bold">Cloud Infrastructure Engineer</h3>
+                            <p class="text-blue-600">BCITS Pvt Limited</p>
+                            <p class="text-gray-500">Aug 2025 – Present</p>
+                        </div>
+                        <div class="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg mx-auto">
+                            <i data-feather="briefcase"></i>
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-12">
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <ul class="space-y-2 text-gray-700">
+                                    <li class="flex">
+                                        <i data-feather="chevron-right" class="text-blue-500 mr-2 mt-1 flex-shrink-0"></i>
+                                        <span>Manage and maintain cloud infrastructure across AWS and other cloud providers, ensuring high availability and performance</span>
+                                    </li>
+                                    <li class="flex">
+                                        <i data-feather="chevron-right" class="text-blue-500 mr-2 mt-1 flex-shrink-0"></i>
+                                        <span>Configure and troubleshoot Ubuntu servers, optimizing system resources and storage</span>
+                                    </li>
+                                    <li class="flex">
+                                        <i data-feather="chevron-right" class="text-blue-500 mr-2 mt-1 flex-shrink-0"></i>
+                                        <span>Implement and maintain VPN solutions for secure connectivity across corporate and client networks</span>
+                                    </li>
+                                    <li class="flex">
+                                        <i data-feather="chevron-right" class="text-blue-500 mr-2 mt-1 flex-shrink-0"></i>
+                                        <span>Configure firewall rules, security groups, and access policies to ensure robust network security</span>
+                                    </li>
+                                    <li class="flex">
+                                        <i data-feather="chevron-right" class="text-blue-500 mr-2 mt-1 flex-shrink-0"></i>
+                                        <span>Troubleshoot server, network, and cloud resource issues, providing timely solutions to minimize downtime</span>
+                                    </li>
+                                    <li class="flex">
+                                        <i data-feather="chevron-right" class="text-blue-500 mr-2 mt-1 flex-shrink-0"></i>
+                                        <span>Collaborate with development teams to support deployment of applications in cloud environments</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-right">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i data-feather="globe" class="mr-2"></i> Languages
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">English</span>
-                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Kannada</span>
-                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Hindi</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-8">
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-left">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i data-feather="code" class="mr-2"></i> Skills
-                        </h3>
-                        <div class="space-y-4">
-                            <div>
-                                <h4 class="font-medium">Cloud Platforms</h4>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AWS (EC2, S3, VPC)</span>
-                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">IAM</span>
-                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Security Groups</span>
-                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">EBS</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Server Management</h4>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Ubuntu</span>
-                                    <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Linux</span>
-                                    <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Shell Scripting</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Networking & Security</h4>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">VPN</span>
-                                    <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Firewall Rules</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Tools & Technologies</h4>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">OpenVPN</span>
-                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Terraform</span>
-                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Git</span>
-                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">MySQL</span>
-                                </div>
-                            </div>
-                            <div>
-                                <h4 class="font-medium">Programming Languages</h4>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <span class="skill-pill bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Python</span>
-                                    <span class="skill-pill bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Java</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-left">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <i data-feather="award" class="mr-2"></i> Certifications
-                        </h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
-                                <span>AWS Cloud Practitioner Essentials</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
-                                <span>Microsoft Azure AI Fundamentals</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
-                                <span>Linux for DevOps Basics</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
-                                <span>Data Structures and Algorithms (DSA)</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
-                                <span>Introduction to Cybersecurity by CISCO</span>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 gradient-bg text-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Get In Touch</h2>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div data-aos="fade-right">
-                    <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-center">
-                            <i data-feather="phone" class="mr-4"></i>
-                            <span>+91 9113262219</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="mail" class="mr-4"></i>
-                            <span>vinivinay6173@gmail.com</span>
-                        </li>
-                    </ul>
-                    <div class="mt-8 text-center">
-                        <h3 class="text-xl font-bold mb-4">Connect With Me</h3>
-                        <div class="flex justify-center space-x-4">
-                            <a href="#" class="bg-white text-indigo-600 p-3 rounded-full hover:bg-indigo-100 transition">
-                                <i data-feather="linkedin"></i>
-                            </a>
+    <section id="skills" class="py-20 section-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+                <span class="gradient-text">Technical Skills</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-sm h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-blue-100 rounded-full mr-4">
+                                <i data-feather="cloud" class="text-blue-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Cloud Platforms</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AWS EC2</span>
+                            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AWS S3</span>
+                            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AWS VPC</span>
+                            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AWS IAM</span>
+                            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Security Groups</span>
+                            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AWS EBS</span>
+                            <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Multi-Cloud</span>
                         </div>
                     </div>
                 </div>
-                <div data-aos="fade-left">
-                    <div class="text-center">
-                        <a href="mailto:vinivinay6173@gmail.com" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-medium hover:bg-indigo-100 transition inline-block">Email Me</a>
+                
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-sm h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-purple-100 rounded-full mr-4">
+                                <i data-feather="server" class="text-purple-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Server Management</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Ubuntu</span>
+                            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Linux</span>
+                            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Shell Scripting</span>
+                            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">System Admin</span>
+                            <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Storage</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-sm h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-green-100 rounded-full mr-4">
+                                <i data-feather="shield" class="text-green-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Networking & Security</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">VPN</span>
+                            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Firewall</span>
+                            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Secure Connectivity</span>
+                            <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Network Security</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-sm h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-yellow-100 rounded-full mr-4">
+                                <i data-feather="tool" class="text-yellow-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Tools & Technologies</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">SSH</span>
+                            <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">OpenVPN</span>
+                            <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Terraform</span>
+                            <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Git</span>
+                            <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">GitHub</span>
+                            <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-sm h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-red-100 rounded-full mr-4">
+                                <i data-feather="code" class="text-red-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Programming Languages</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="skill-pill bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Java</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-sm h-full">
+                        <div class="flex items-center mb-4">
+                            <div class="p-3 bg-indigo-100 rounded-full mr-4">
+                                <i data-feather="cpu" class="text-indigo-600"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold">Others</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Monitoring</span>
+                            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Troubleshooting</span>
+                            <span class="skill-pill bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Optimization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 50%, #93c5fd 100%);">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+                <span class="gradient-text">Featured Projects</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center">
+                        <i data-feather="codepen" class="text-white w-16 h-16"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio Website with CI/CD using AWS CodePipeline</h3>
+                        <p class="text-gray-600 mb-4">
+                            Deployed an interactive resume on AWS S3 with automated updates via Code Pipeline. Integrated GitHub for version control, enabling real-time updates on code changes. Streamlined hosting using static website configuration.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">AWS S3</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">CodePipeline</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">GitHub</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Static Website</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                        <i data-feather="eye" class="text-white w-16 h-16"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">PenumoVit – Vision Transformer Based Pneumonia Detection System</h3>
+                        <p class="text-gray-600 mb-4">
+                            Developed a medical imaging AI system using Vision Transformer (ViT) to detect pneumonia from chest X-rays. Achieved ~95% accuracy on the standard dataset. Implemented data preprocessing, model training, and evaluation using Python and deep learning frameworks.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Vision Transformer</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Python</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Deep Learning</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Medical Imaging</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500 flex items-center justify-center">
+                        <i data-feather="zap" class="text-white w-16 h-16"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">PowerOf2 Website using AWS Services</h3>
+                        <p class="text-gray-600 mb-4">
+                            Deployed a static website on the AWS Amplify which uses DynamoDB to store the math results and the function of the website is to return power of 2. Other services used are Lambda, IAM, API Gateway and DynamoDB.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">AWS Amplify</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">DynamoDB</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Lambda</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">API Gateway</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-48 bg-gradient-to-r from-yellow-400 to-red-500 flex items-center justify-center">
+                        <i data-feather="camera" class="text-white w-16 h-16"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Vehicle Number Plate Detection using OpenCV</h3>
+                        <p class="text-gray-600 mb-4">
+                            Designed and implemented a cutting-edge computer vision system leveraging OpenCV and Easy OCR. This system achieved real-time vehicle number plate detection, significantly reducing manual data collection efforts in traffic monitoring while enhancing data accuracy.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">OpenCV</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Easy OCR</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Computer Vision</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 section-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">
+                <span class="gradient-text">Get In Touch</span>
+            </h2>
+            
+            <div data-aos="fade-up" class="max-w-lg mx-auto text-center">
+                <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                <div class="space-y-4 flex flex-col items-center mb-8">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-blue-100 rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone text-blue-600"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-medium">Phone</h4>
+                            <p class="text-gray-600">9113262219</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="p-3 bg-purple-100 rounded-full mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail text-purple-600"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <div class="text-left">
+                            <h4 class="font-medium">Email</h4>
+                            <p class="text-gray-600">vinivinay6173@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4">Connect With Me</h3>
+                    <div class="flex space-x-4 justify-center">
+                        <a href="#" class="p-3 bg-gray-100 rounded-full hover:bg-blue-100 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin text-blue-600"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" class="p-3 bg-gray-100 rounded-full hover:bg-blue-100 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github text-gray-800"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                        <a href="#" class="p-3 bg-gray-100 rounded-full hover:bg-red-100 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-youtube text-red-600"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                        </a>
+                        <a href="#" class="p-3 bg-gray-100 rounded-full hover:bg-blue-100 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-twitter text-blue-400"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -331,17 +508,69 @@
     </section>
 
     <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2023 Vinay S. All rights reserved.</p>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold gradient-text">VINAY S</span>
+                    <p class="text-gray-400 mt-1">Cloud Infrastructure Engineer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Vinay S. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Initialize animations
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
             once: true
         });
+
+        // Initialize Vanta.js
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3b82f6,
+            backgroundColor: 0xf8fafc
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            feather.replace();
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Replace all icons
         feather.replace();
     </script>
 </body>
