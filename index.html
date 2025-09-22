@@ -3,242 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinay S | Cloud Infrastructure Engineer</title>
+    <title>Vinay S | Cloud Infra Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
     <style>
-        .gradient-text {
-            background: linear-gradient(90deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
         }
         .skill-pill {
-            background: rgba(59, 130, 246, 0.2);
-            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        .skill-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .section-divider {
+            background: linear-gradient(90deg, rgba(99,102,241,0.1) 0%, rgba(139,92,246,0.1) 50%, rgba(217,70,239,0.1) 100%);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
-    <div id="vanta-bg" class="fixed inset-0 -z-10"></div>
-    
-    <header class="container mx-auto px-6 py-8">
-        <nav class="flex justify-between items-center">
-            <div class="text-4xl font-bold gradient-text text-center w-full">VINAY S</div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#experience" class="hover:text-blue-400 transition">Experience</a>
-                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-                <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+<body class="min-h-screen">
+    <!-- Header/Navigation -->
+    <header class="gradient-bg text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold tracking-tight">V I N A Y S</div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#about" class="hover:text-indigo-200 transition">About</a></li>
+                        <li><a href="#experience" class="hover:text-indigo-200 transition">Experience</a></li>
+                        <li><a href="#projects" class="hover:text-indigo-200 transition">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-indigo-200 transition">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="md:hidden focus:outline-none">
+                    <i data-feather="menu"></i>
+                </button>
             </div>
-            <button class="md:hidden">
-                <i data-feather="menu"></i>
-            </button>
-        </nav>
+        </div>
     </header>
 
-    <main class="container mx-auto px-6">
-        <!-- Hero Section -->
-        <section class="min-h-screen flex items-center" data-aos="fade-up">
-            <div class="glass-card rounded-2xl p-8 max-w-3xl">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 gradient-text text-center">Cloud Infrastructure Engineer</h1>
-                <p class="text-xl mb-8">Building scalable, secure cloud solutions with AWS and multi-cloud environments</p>
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Cloud Infrastructure Engineer</h1>
+                <p class="text-xl mb-8">Building scalable, secure, and efficient cloud solutions</p>
                 <div class="flex space-x-4">
-                    <a href="#contact" class="px-6 py-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition">Get in Touch</a>
-                    <a href="#projects" class="px-6 py-3 border border-blue-400 rounded-lg hover:bg-blue-900/30 transition">View Projects</a>
+                    <a href="#contact" class="bg-white text-indigo-600 px-6 py-2 rounded-full font-medium hover:bg-indigo-100 transition">Get In Touch</a>
+                    <a href="#projects" class="border-2 border-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-indigo-600 transition">View Projects</a>
                 </div>
             </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-20" data-aos="fade-up">
-            <h2 class="text-3xl font-bold mb-12 gradient-text">Profile Summary</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="glass-card rounded-2xl p-8">
-                    <h3 class="text-2xl font-semibold mb-4">About Me</h3>
-                    <p class="mb-6">Cloud Infrastructure Engineer with hands-on experience in AWS and multi-cloud environments. Skilled in Ubuntu server management, VPN configuration, firewall rules, and troubleshooting server & network issues.</p>
-                    <p>Currently managing cloud projects for Rajasthan and Tripura State Electricity Board websites. Completed B-Tech in CSE (AIML) from Reva University (2025).</p>
-                </div>
-                <div class="glass-card rounded-2xl p-8">
-                    <h3 class="text-2xl font-semibold mb-4">Skills</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-pill px-4 py-2 rounded-full">AWS</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">Ubuntu/Linux</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">VPN</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">Firewall</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">Terraform</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">Python</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">Java</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">MySQL</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">Git/GitHub</span>
-                        <span class="skill-pill px-4 py-2 rounded-full">OpenCV</span>
-                    </div>
+            <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                <div class="bg-white rounded-full p-2 shadow-2xl">
+                    <img src="Off DP 2.jpg" alt="Profile" class="rounded-full w-64 h-64 object-cover">
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="py-20" data-aos="fade-up">
-            <h2 class="text-3xl font-bold mb-12 gradient-text">Professional Experience</h2>
-            <div class="glass-card rounded-2xl p-8">
-                <div class="flex items-start mb-8">
-                    <div class="bg-blue-600/20 p-4 rounded-lg mr-6">
-                        <i data-feather="briefcase" class="w-8 h-8"></i>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Profile Summary</h2>
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-xl p-8 shadow-lg" data-aos="fade-up">
+                <p class="text-lg leading-relaxed">
+                    Cloud Infrastructure Engineer with experience in AWS and multi-cloud environments. Skilled in Ubuntu server management, VPN configuration, firewall rules, and troubleshooting server and infrastructure issues. B.Tech in CSE (AIML) from Reva University (2025).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+                <!-- Left Column -->
+                <div class="space-y-8">
+                    <!-- Contact -->
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-right">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i data-feather="mail" class="mr-2"></i> Contact
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i data-feather="phone" class="mr-2"></i> +91 9113262219</li>
+                            <li class="flex items-center"><i data-feather="mail" class="mr-2"></i> vinivinay6173@gmail.com</li>
+                        </ul>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-semibold">Cloud Infrastructure Engineer</h3>
-                        <p class="text-blue-400">BCITS Pvt Limited | Aug 2025 – Present</p>
-                        <ul class="mt-4 space-y-2 list-disc pl-5">
-                            <li>Manage and optimize cloud infrastructure on AWS and other providers</li>
-                            <li>Configure and troubleshoot Ubuntu servers, VPNs, and firewall rules</li>
-                            <li>Ensure high availability by resolving server, network, and cloud resource issues</li>
-                            <li>Handle cloud projects for state electricity board websites</li>
+
+                    <!-- Education -->
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-right">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i data-feather="book" class="mr-2"></i> Education
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-medium">B-Tech in CSE(AIML)</h4>
+                                <p class="text-sm text-gray-600">REVA University | 8.48 CGPA | 2025</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">12th (State Board)</h4>
+                                <p class="text-sm text-gray-600">Narayana PU College | 89% | 2021</p>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">10th (CBSE)</h4>
+                                <p class="text-sm text-gray-600">Narayana E-Techno School | 90.6% | 2019</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-right">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i data-feather="globe" class="mr-2"></i> Languages
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">English</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Kannada</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm">Hindi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="space-y-8">
+                    <!-- Skills -->
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-left">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i data-feather="code" class="mr-2"></i> Skills
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-medium">Cloud Platforms</h4>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AWS (EC2, S3, VPC)</span>
+                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">IAM</span>
+                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Security Groups</span>
+                                    <span class="skill-pill bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">EBS</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Server Management</h4>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Ubuntu</span>
+                                    <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Linux</span>
+                                    <span class="skill-pill bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Shell Scripting</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Networking & Security</h4>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">VPN</span>
+                                    <span class="skill-pill bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Firewall Rules</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Tools & Technologies</h4>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">SSH</span>
+                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">OpenVPN</span>
+                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Terraform</span>
+                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">Git</span>
+                                    <span class="skill-pill bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">MySQL</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-medium">Programming Languages</h4>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-pill bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Python</span>
+                                    <span class="skill-pill bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Java</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="bg-gray-50 rounded-xl p-6 shadow-lg" data-aos="fade-left">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i data-feather="award" class="mr-2"></i> Certifications
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
+                                <span>AWS Cloud Practitioner Essentials</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
+                                <span>Microsoft Azure AI Fundamentals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
+                                <span>Linux for DevOps Basics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
+                                <span>Data Structures and Algorithms (DSA)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-feather="check-circle" class="mr-2 text-green-500 mt-1"></i>
+                                <span>Introduction to Cybersecurity by CISCO</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-20" data-aos="fade-up">
-            <h2 class="text-3xl font-bold mb-12 gradient-text">Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="glass-card rounded-2xl p-8 hover:border-blue-400 transition border border-transparent">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-600/20 p-3 rounded-lg mr-4">
-                            <i data-feather="cloud" class="w-6 h-6"></i>
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Professional Experience</h2>
+            <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-indigo-100 p-3 rounded-full mr-4">
+                            <i data-feather="briefcase" class="text-indigo-600"></i>
                         </div>
-                        <h3 class="text-xl font-semibold">Portfolio Website with CI/CD</h3>
+                        <div>
+                            <h3 class="text-xl font-bold">Cloud Infrastructure Engineer</h3>
+                            <p class="text-gray-600">BCITS Pvt Limited | Aug 2025 – Present</p>
+                        </div>
                     </div>
-                    <p class="mb-4">Deployed an interactive portfolio/resume on AWS S3 with automated updates via CodePipeline.</p>
+                    <ul class="space-y-3 pl-4">
+                        <li class="flex items-start">
+                            <i data-feather="chevron-right" class="text-indigo-500 mr-2 mt-1"></i>
+                            <span>Manage and optimize cloud infrastructure on AWS and other providers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="chevron-right" class="text-indigo-500 mr-2 mt-1"></i>
+                            <span>Configure and troubleshoot Ubuntu servers, VPNs, and firewall rules</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="chevron-right" class="text-indigo-500 mr-2 mt-1"></i>
+                            <span>Resolve server, network, and cloud resource issues to ensure high availability</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up">
+                    <div class="bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                        <i data-feather="cloud" class="text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Portfolio Website with CI/CD</h3>
+                    <p class="text-gray-600 mb-4">Deployed an interactive resume on AWS S3 with automated updates via Code Pipeline.</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">AWS S3</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">CodePipeline</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">GitHub</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">AWS</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">S3</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">CodePipeline</span>
+                        <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded-full text-xs">GitHub</span>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="glass-card rounded-2xl p-8 hover:border-blue-400 transition border border-transparent">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-600/20 p-3 rounded-lg mr-4">
-                            <i data-feather="eye" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold">PenumoVit – Pneumonia Detection</h3>
+                <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-purple-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                        <i data-feather="activity" class="text-purple-600"></i>
                     </div>
-                    <p class="mb-4">Developed a medical imaging AI system using Vision Transformer (ViT) to detect pneumonia from chest X-rays with ~95% accuracy.</p>
+                    <h3 class="text-xl font-bold mb-2">PenumoVit – Pneumonia Detection</h3>
+                    <p class="text-gray-600 mb-4">Vision Transformer (ViT) based system to detect pneumonia from chest X-rays with ~95% accuracy.</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">Vision Transformer</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">Python</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">Medical AI</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">AI</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Vision Transformer</span>
+                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">Python</span>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="glass-card rounded-2xl p-8 hover:border-blue-400 transition border border-transparent">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-600/20 p-3 rounded-lg mr-4">
-                            <i data-feather="cpu" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold">PowerOf2 Website</h3>
+                <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-blue-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                        <i data-feather="cpu" class="text-blue-600"></i>
                     </div>
-                    <p class="mb-4">Deployed a static website on AWS Amplify using DynamoDB, Lambda, API Gateway, and IAM for serverless architecture.</p>
+                    <h3 class="text-xl font-bold mb-2">PowerOf2 Website</h3>
+                    <p class="text-gray-600 mb-4">Static website on AWS Amplify using DynamoDB, Lambda, API Gateway to return power of 2.</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">AWS Amplify</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">DynamoDB</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">Lambda</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">AWS Amplify</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">DynamoDB</span>
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">Lambda</span>
                     </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="glass-card rounded-2xl p-8 hover:border-blue-400 transition border border-transparent">
-                    <div class="flex items-center mb-4">
-                        <div class="bg-blue-600/20 p-3 rounded-lg mr-4">
-                            <i data-feather="camera" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold">Vehicle Number Plate Detection</h3>
+                <div class="project-card bg-gray-50 rounded-xl p-6 shadow-lg transition duration-300" data-aos="fade-up">
+                    <div class="bg-green-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                        <i data-feather="eye" class="text-green-600"></i>
                     </div>
-                    <p class="mb-4">Developed a real-time vehicle number plate detection system using OpenCV and EasyOCR to reduce manual traffic monitoring.</p>
+                    <h3 class="text-xl font-bold mb-2">Vehicle Number Plate Detection</h3>
+                    <p class="text-gray-600 mb-4">Computer vision system using OpenCV and Easy OCR for real-time vehicle number plate detection.</p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">OpenCV</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">EasyOCR</span>
-                        <span class="text-xs px-3 py-1 bg-blue-900/50 rounded-full">Computer Vision</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">OpenCV</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Easy OCR</span>
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Python</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20" data-aos="fade-up">
-            <h2 class="text-3xl font-bold mb-12 gradient-text">Get In Touch</h2>
-            <div class="glass-card rounded-2xl p-8 max-w-2xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <i data-feather="phone" class="mr-4"></i>
-                                <span>+91 9113262219</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i data-feather="mail" class="mr-4"></i>
-                                <span>vinivinay6173@gmail.com</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-semibold mb-4">Connect With Me</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="p-3 bg-blue-900/30 rounded-full hover:bg-blue-600 transition">
-                                <i data-feather="github"></i>
-                            </a>
-                            <a href="#" class="p-3 bg-blue-900/30 rounded-full hover:bg-blue-600 transition">
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16" data-aos="fade-up">Get In Touch</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div data-aos="fade-right">
+                    <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i data-feather="phone" class="mr-4"></i>
+                            <span>+91 9113262219</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="mail" class="mr-4"></i>
+                            <span>vinivinay6173@gmail.com</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8 text-center">
+                        <h3 class="text-xl font-bold mb-4">Connect With Me</h3>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="bg-white text-indigo-600 p-3 rounded-full hover:bg-indigo-100 transition">
                                 <i data-feather="linkedin"></i>
                             </a>
-                            <a href="#" class="p-3 bg-blue-900/30 rounded-full hover:bg-blue-600 transition">
-                                <i data-feather="twitter"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
+                <div data-aos="fade-left">
+                    <div class="text-center">
+                        <a href="mailto:vinivinay6173@gmail.com" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-medium hover:bg-indigo-100 transition inline-block">Email Me</a>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer class="py-8 text-center text-gray-400">
-        <p>© 2023 Vinay S. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>© 2023 Vinay S. All rights reserved.</p>
+        </div>
     </footer>
 
     <script>
-        // Initialize Vanta.js background
-        VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3b82f6,
-            backgroundColor: 0x111827,
-            points: 12.00,
-            maxDistance: 22.00,
-            spacing: 16.00
-        });
-
-        // Initialize AOS and Feather Icons
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
